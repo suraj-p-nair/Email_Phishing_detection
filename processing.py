@@ -25,7 +25,7 @@ def clean_text(text):
     stemmer = nltk.PorterStemmer()
     clean_text = [stemmer.stem(word) for word in clean_text]
 
-    return clean_text
+    return ' '.join(clean_text)
 
 
 
@@ -92,17 +92,7 @@ def extract_features(text, grammatical_errors):
     special_char_features = [1 if char in text else 0 for char in special_characters]
 
     # Features based on part-of-speech (POS) tagging
-    pos_tags = pos_tag(text)
-    noun_count = 0
-    verb_count = 0
-    adjective_count = 0
-    for word, tag in pos_tags:
-        if tag.startswith('NN'):  # Noun
-            noun_count += 1
-        elif tag.startswith('VB'):  # Verb
-            verb_count += 1
-        elif tag.startswith('JJ'):  # Adjective
-            adjective_count += 1
+    
 
     # Previously detected phishing domains
     previously_detected_emails = []
@@ -120,7 +110,7 @@ def extract_features(text, grammatical_errors):
     # Previously detected feature
     previously_detected_feature = 1 if previously_detected_emails or previously_detected_urls else 0
 
-    features = keyword_features + url_features + special_char_features + [noun_count, verb_count, adjective_count] + [
+    features = keyword_features + url_features + special_char_features  + [
         previously_detected_feature, grammatical_errors
     ]
     return features

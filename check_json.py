@@ -1,4 +1,5 @@
 from headers import *
+data = ""
 def check_phishing_email(filename, email_domain):
     """
     Checks if an email domain is marked as phishing in the JSON file.
@@ -9,10 +10,11 @@ def check_phishing_email(filename, email_domain):
         is_phishing: True if the email domain is marked as phishing, False otherwise.
     """
     with open(filename, 'r') as f:
-        data = json.load(f)
-        phishing_emails = data['phishing_emails']
-
-    return email_domain in phishing_emails
+        try:
+            data = json.load(f)
+        except:
+            pass
+    return email_domain in data["phishing_emails"]
 
 
 def check_phishing_url(filename, url_domain):
@@ -25,10 +27,12 @@ def check_phishing_url(filename, url_domain):
         is_phishing: True if the URL domain is marked as phishing, False otherwise.
     """
     with open(filename, 'r') as f:
-        data = json.load(f)
-        phishing_urls = data['phishing_urls']
+        try:
+            data = json.load(f)
+        except:
+            pass
+    return url_domain in data["phishing_urls"]
 
-    return url_domain in phishing_urls
 
 def add_phishing_email(filename, email_domain):
     """
@@ -39,9 +43,7 @@ def add_phishing_email(filename, email_domain):
     """
     with open(filename, 'r') as f:
         data = json.load(f)
-        phishing_emails = data['phishing_emails']
-
-    phishing_emails.append(email_domain)
+        data["phishing_emails"].append(email_domain)
 
     with open(filename, 'w') as f:
         json.dump(data, f, indent=4)
@@ -55,9 +57,6 @@ def add_phishing_url(filename, url_domain):
     """
     with open(filename, 'r') as f:
         data = json.load(f)
-        phishing_urls = data['phishing_urls']
-
-    phishing_urls.append(url_domain)
-
+        data["phishing_urls"].append(url_domain)
     with open(filename, 'w') as f:
         json.dump(data, f, indent=4)

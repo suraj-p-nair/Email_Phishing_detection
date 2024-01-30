@@ -8,3 +8,5 @@ import nltk
 import pickle
 from textblob import TextBlob
 import json
+from sklearn.ensemble import RandomForestClassifier
+import pandas as pd
