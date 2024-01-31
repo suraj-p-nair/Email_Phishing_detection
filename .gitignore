@@ -2,3 +2,4 @@ __pychache__/
 sandbox/
 spam_ham_dataset.csv
 sample.csv
+commons/__pycache__/

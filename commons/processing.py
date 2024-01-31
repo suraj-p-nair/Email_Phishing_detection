@@ -1,15 +1,9 @@
-from check_json import *
-filename = 'phishing_data.json'
+from commons.check_json import *
+filename = 'commons/phishing_data.json'
 
 
 def clean_text(text):
-    """
-    Preprocesses the text by removing punctuation, converting to lowercase, removing stop words, and stemming.
-    Args:
-        text: The text to clean.
-    Returns:
-        clean_text: The preprocessed text.
-    """
+
     # Remove punctuation
     punc = set(string.punctuation)
     clean_text = ''.join(ch for ch in text if ch not in punc)
@@ -24,7 +18,7 @@ def clean_text(text):
     # Stemming
     stemmer = nltk.PorterStemmer()
     clean_text = [stemmer.stem(word) for word in clean_text]
-
+    print(clean_text)
     return ' '.join(clean_text)
 
 
@@ -37,13 +31,14 @@ def extract_emails(text):
     matches = re.findall(email_pattern, text)
 
     # Extract and return only the domain names
-    email_domains = [match.split("@")[1] for match in matches]
+    
 
-    return email_domains
+    return matches
 
 def extract_urls(text):
     url_pattern = r"(https?://[^\s]+)"
     urls = re.findall(url_pattern, text)
+    print(urls)
     return urls
 
 def extract_grammatical_errors(text):
@@ -64,14 +59,6 @@ def extract_grammatical_errors(text):
 
 
 def extract_features(text, grammatical_errors):
-    """
-    Extracts features from the preprocessed text.
-    Args:
-        text: The preprocessed text.
-        grammatical_errors: The number of grammatical errors.
-    Returns:
-        features: A list of extracted features.
-    """
 
      # Extract email domains
     email_domains = extract_emails(text)
@@ -102,10 +89,12 @@ def extract_features(text, grammatical_errors):
     for email_domain in email_domains:
         if check_phishing_email(filename, email_domain):
             previously_detected_emails.append(email_domain)
+            print(f"Email domain '{email_domain}' is already marked as phishing")
 
     for url_domain in url_domains:
         if check_phishing_url(filename, url_domain):
             previously_detected_urls.append(url_domain)
+            print(f"URL domain '{url_domain}' is already marked as phishing")
 
     # Previously detected feature
     previously_detected_feature = 1 if previously_detected_emails or previously_detected_urls else 0
