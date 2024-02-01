@@ -1,5 +1,7 @@
-__pychache__/
+__pycache__/
 sandbox/
-spam_ham_dataset.csv
+datasets/
 sample.csv
 commons/__pycache__/
+model/
+__init__.py

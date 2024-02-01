@@ -6,6 +6,8 @@ from commons import processing as p
 import json
 filename="commons/phishing_data.json"
 
+count = 100
+
 def progress(count, total, status=''):
     bar_len = 60
     filled_len = int(round(bar_len * count / float(total)))
@@ -17,34 +19,31 @@ def progress(count, total, status=''):
 
 def predict_phishing(model, text):
 
-    # Preprocess the text
     text = p.clean_text(text)
-    print(text)
 
-    # Extract grammatical errors
+
     grammatical_errors = p.extract_grammatical_errors(text)
 
-    # Extract features
     features = p.extract_features(text, grammatical_errors)
 
-    # Predict whether the text is phishing using the machine learning model
-    is_phishing = model.predict([features])[0]
 
-    return not is_phishing
+    is_phishing = model.predict([features])
+   
+
+    return is_phishing
 
 def train():
 
     data = pd.read_csv("datasets/train_sample.csv") 
 
-    label = data['label_num'].head(5)
+    label = data['label_num'].head(count)
 
-    text = [i for i in data['text'].head(5)]
+    text = [i for i in data['text'].head(count)]
 
     features = []
 
-    model = RandomForestClassifier(n_estimators=100, random_state=42)
+    model = RandomForestClassifier(n_estimators=50, random_state=42)
 
-    tot = len(text)
 
     for i in range(len(text)):
 
@@ -58,12 +57,12 @@ def train():
         features.append(feature)
   
 
-        progress(i+1,tot)
+        progress(i+1,count)
 
 
     model.fit(features, label)
 
-    with open("model/random_forest_model.pkl", "wb") as f:
+    with open("model/phishing_model.pkl", "wb") as f:
 
         pickle.dump(model, f)
 
@@ -71,9 +70,11 @@ def train():
 
 
 def test():
-    model = pickle.load(open('model/random_forest_model.pkl', 'rb'))
+    model = pickle.load(open('model/phishing_model.pkl', 'rb'))
 
     data = pd.read_csv("datasets/train_sample.csv")
+
+    text = [i for i in data['text'].head(count)]
 
     try:
         with open(filename, 'r') as f:
@@ -85,26 +86,30 @@ def test():
             temp["phishing_urls"] = []
             json.dump(temp, f, indent=4)
 
-    text = ["click now urgent https://abcd.com money phishing"]
+    acc = 0
+    
+    for i in range(len(text)):
+        email_domain = p.extract_emails(text[i])
+        url_domain = p.extract_urls(text[i])
+        is_phishing = predict_phishing(model, text[i])
 
-    for i in text:
-        email_domain = p.extract_emails(i)
-        url_domain = p.extract_urls(i)
-        print(url_domain)
-        is_phishing = predict_phishing(model, text)
-
-        if is_phishing:
+        if is_phishing[0]:
+            if(is_phishing[0] == data['label_num'][i]):
+                acc+=1
             print("The text is predicted to be a phishing email")
             if len(email_domain)!=0:
-                for i in email_domain:
-                    p.add_phishing_email(filename, i)
-                    print(f"Email domain '{i}' is newly detected and added to phishing list")
+                for j in email_domain:
+                    p.add_phishing_email(filename, j)
+                    print(f"Email domain '{j}' is newly detected and added to phishing list")
             if len(url_domain)!=0:
-                for i in url_domain:
-                    p.add_phishing_url(filename, i)
-                    print(f"URL domain '{i}' is newly detected and added to phishing list")
+                for k in url_domain:
+                    p.add_phishing_url(filename, k)
+                    print(f"URL domain '{k}' is newly detected and added to phishing list")
         else:
             print("The text is predicted not to be a phishing email")
+        progress(i+1,count)
+
+    print(acc,'/',count,'=',(acc/count)*100,'%')
 
     
     

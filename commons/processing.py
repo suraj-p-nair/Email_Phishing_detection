@@ -18,7 +18,6 @@ def clean_text(text):
     # Stemming
     stemmer = nltk.PorterStemmer()
     clean_text = [stemmer.stem(word) for word in clean_text]
-    print(clean_text)
     return ' '.join(clean_text)
 
 
@@ -38,7 +37,6 @@ def extract_emails(text):
 def extract_urls(text):
     url_pattern = r"(https?://[^\s]+)"
     urls = re.findall(url_pattern, text)
-    print(urls)
     return urls
 
 def extract_grammatical_errors(text):
@@ -71,7 +69,7 @@ def extract_features(text, grammatical_errors):
     keyword_features = [1 if keyword in text else 0 for keyword in keywords]
 
     # Presence of URL patterns
-    url_patterns = ['http://', 'https://']
+    url_patterns = ['http://', 'https://', '.com']
     url_features = [1 if pattern in text else 0 for pattern in url_patterns]
 
     # Presence of special characters
@@ -79,6 +77,18 @@ def extract_features(text, grammatical_errors):
     special_char_features = [1 if char in text else 0 for char in special_characters]
 
     # Features based on part-of-speech (POS) tagging
+
+    tokens = nltk.word_tokenize(text)
+    tagged_tokens = nltk.pos_tag(tokens)
+    pos_counts = {}
+
+    for tag in ['PRP', 'VB', 'VBD','VBG','NN','NNS','JJ','JJR','JJS','RB','RBR','RBS']:
+        pos_counts[tag] = 0
+    for word, tag in tagged_tokens:
+        if tag in ['PRP', 'VB', 'VBD','VBG','NN','NNS','JJ','JJR','JJS','RB','RBR','RBS']: 
+            pos_counts[tag] = pos_counts.get(tag, 0) + 1
+    pos_features = list(pos_counts.values())  # Convert counts to a list
+    
     
 
     # Previously detected phishing domains
@@ -87,11 +97,13 @@ def extract_features(text, grammatical_errors):
 
     # Check if extracted domains are already marked as phishing
     for email_domain in email_domains:
+        
         if check_phishing_email(filename, email_domain):
             previously_detected_emails.append(email_domain)
             print(f"Email domain '{email_domain}' is already marked as phishing")
 
     for url_domain in url_domains:
+        
         if check_phishing_url(filename, url_domain):
             previously_detected_urls.append(url_domain)
             print(f"URL domain '{url_domain}' is already marked as phishing")
@@ -99,9 +111,9 @@ def extract_features(text, grammatical_errors):
     # Previously detected feature
     previously_detected_feature = 1 if previously_detected_emails or previously_detected_urls else 0
 
-    features = keyword_features + url_features + special_char_features  + [
-        previously_detected_feature, grammatical_errors
-    ]
+    
+
+    features = keyword_features + url_features + special_char_features  + [ grammatical_errors , previously_detected_feature] + pos_features
     return features
 
 
