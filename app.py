@@ -6,7 +6,7 @@ from commons import processing as p
 import json
 filename="commons/phishing_data.json"
 
-count = 100
+count = 10
 
 def progress(count, total, status=''):
     bar_len = 60
@@ -20,7 +20,6 @@ def progress(count, total, status=''):
 def predict_phishing(model, text):
 
     text = p.clean_text(text)
-
 
     grammatical_errors = p.extract_grammatical_errors(text)
 
@@ -110,11 +109,6 @@ def test():
         progress(i+1,count)
 
     print(acc,'/',count,'=',(acc/count)*100,'%')
-
     
-    
-
-
-
 if __name__ == "__main__":
     test()

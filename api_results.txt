@@ -1,0 +1,4 @@
+BODY:	This is the content of the email
+FROM:	Suraj P Nair <suraj.trv20it8601@gecbh.ac.in>
+SUBJECT:	This is the subject
+TO:		Kyoya Assasins <kyoyaleone2@gmail.com>

@@ -5,3 +5,4 @@ sample.csv
 commons/__pycache__/
 model/
 __init__.py
+credentials.json
