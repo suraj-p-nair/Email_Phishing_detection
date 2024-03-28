@@ -6,7 +6,7 @@ from commons import processing as p
 import json
 filename="commons/phishing_data.json"
 
-count = 10
+
 
 def progress(count, total, status=''):
     bar_len = 60
@@ -35,6 +35,8 @@ def train():
 
     data = pd.read_csv("datasets/train_sample.csv") 
 
+    count = data.shape[0]
+
     label = data['label_num'].head(count)
 
     text = [i for i in data['text'].head(count)]
@@ -43,19 +45,30 @@ def train():
 
     model = RandomForestClassifier(n_estimators=50, random_state=42)
 
-
     for i in range(len(text)):
 
         temp = p.clean_text(text[i])
         
-
         grammatical_errors = p.extract_grammatical_errors(temp)
 
         feature = p.extract_features(temp, grammatical_errors)
 
         features.append(feature)
-  
 
+        email_domain = p.extract_emails(text[i])
+        
+        url_domain = p.extract_urls(text[i])
+
+        if label[i]:
+            #print("The text is predicted to be a phishing email")
+            if len(email_domain)!=0:
+                for j in email_domain:
+                    p.add_phishing_email(filename, j)
+                    print(f"Email domain '{j}' is newly detected and added to phishing list")
+            if len(url_domain)!=0:
+                for k in url_domain:
+                    p.add_phishing_url(filename, k)
+                    print(f"URL domain '{k}' is newly detected and added to phishing list")
         progress(i+1,count)
 
 
@@ -69,6 +82,7 @@ def train():
 
 
 def test():
+    count = 1000
     model = pickle.load(open('model/phishing_model.pkl', 'rb'))
 
     data = pd.read_csv("datasets/train_sample.csv")
@@ -95,7 +109,7 @@ def test():
         if is_phishing[0]:
             if(is_phishing[0] == data['label_num'][i]):
                 acc+=1
-            print("The text is predicted to be a phishing email")
+            #print("The text is predicted to be a phishing email")
             if len(email_domain)!=0:
                 for j in email_domain:
                     p.add_phishing_email(filename, j)
@@ -104,11 +118,13 @@ def test():
                 for k in url_domain:
                     p.add_phishing_url(filename, k)
                     print(f"URL domain '{k}' is newly detected and added to phishing list")
-        else:
-            print("The text is predicted not to be a phishing email")
+        #else:
+            #print("The text is predicted not to be a phishing email")
+
         progress(i+1,count)
 
     print(acc,'/',count,'=',(acc/count)*100,'%')
-    
+
 if __name__ == "__main__":
+    train()
     test()

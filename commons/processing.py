@@ -54,12 +54,13 @@ def extract_grammatical_errors(text):
 
 
 def extract_features(text, grammatical_errors):
-
     email_domains = extract_emails(text)
 
     url_domains = extract_urls(text)
 
-    keywords = ['phishing', 'scam', 'urgent', 'act now', 'click here', 'win', 'free']
+    keywords = ["Urgent action required", "Immediate attention required", "Account suspended", "Account compromised", "Security alert", "Emergency", "PayPal", "Bank of America", "Amazon", "Apple", "Microsoft", "IRS", "Social Security Administration", "Netflix", "Invoice", "Payment confirmation", "Tax refund", "Wire transfer", "Payment overdue", "Unusual activity in your account", "Password reset", "Account verification", "Unusual login attempts", "Account locked", "Update your information", "Verify your identity", "Social Security number", "Credit card number", "Bank account information", "Login credentials", "PIN", "Date of birth", "Mother's maiden name", "Free gift", "Prize winner", "Exclusive offer", "Limited time offer", "Discount code", "Special deal", "Click here", "Login now", "Verify your account", "Confirm your information", "Reset your password", "Update your account", "Dear customer", "Dear valued customer", "Dear user", "Hello", "Hi", "Attached file", "Download file", "Click to view document", "View file"]
+
+
     keyword_features = [1 if keyword in text else 0 for keyword in keywords]
 
     url_patterns = ['http://', 'https://', '.com']
@@ -77,8 +78,14 @@ def extract_features(text, grammatical_errors):
     for word, tag in tagged_tokens:
         if tag in ['PRP', 'VB', 'VBD','VBG','NN','NNS','JJ','JJR','JJS','RB','RBR','RBS']: 
             pos_counts[tag] = pos_counts.get(tag, 0) + 1
-    pos_features = list(pos_counts.values())
     
+
+    pos_features = list(pos_counts.values())
+
+
+    for i in range(len(pos_features)):
+        pos_features[i] = round(pos_features[i] / len(text.split(' ')), 3)
+
     previously_detected_emails = []
     previously_detected_urls = []
 
