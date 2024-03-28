@@ -56,7 +56,7 @@ def train():
         features.append(feature)
 
         email_domain = p.extract_emails(text[i])
-        
+
         url_domain = p.extract_urls(text[i])
 
         if label[i]:
@@ -124,7 +124,6 @@ def test():
         progress(i+1,count)
 
     print(acc,'/',count,'=',(acc/count)*100,'%')
-
 if __name__ == "__main__":
     train()
     test()
