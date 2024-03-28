@@ -124,7 +124,6 @@ def test():
         progress(i+1,count)
 
     print(acc,'/',count,'=',(acc/count)*100,'%')
-    
 if __name__ == "__main__":
     train()
     test()
