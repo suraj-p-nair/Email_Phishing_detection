@@ -10,3 +10,4 @@ from textblob import TextBlob
 import json
 from sklearn.ensemble import RandomForestClassifier
 import pandas as pd
+from nltk.sentiment.vader import SentimentIntensityAnalyzer

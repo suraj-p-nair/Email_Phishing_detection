@@ -4,8 +4,13 @@ import pickle
 import sys
 from commons import processing as p
 import json
+import os
 filename="commons/phishing_data.json"
+model_file_path = "model/phishing_model.pkl"
+f = open("api_results.txt",'w', encoding="utf-8")
 
+previously_detected_emails = []
+previously_detected_urls = []
 
 
 def progress(count, total, status=''):
@@ -15,6 +20,23 @@ def progress(count, total, status=''):
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
     sys.stdout.write('[%s] %s%s ...%s\r' % (bar, percents, '%', status))
     sys.stdout.flush()
+
+def check_phishing_email(filename, email_domain):
+    with open(filename, 'r') as fr:
+        try:
+            data = json.load(fr)
+        except:
+            pass
+    return email_domain in data["phishing_emails"]
+
+
+def check_phishing_url(filename, url_domain):
+    with open(filename, 'r') as fr:
+        try:
+            data = json.load(fr)
+        except:
+            pass
+    return url_domain in data["phishing_urls"]
 
 
 def predict_phishing(model, text):
@@ -33,19 +55,32 @@ def predict_phishing(model, text):
 
 def train():
 
-    data = pd.read_csv("datasets/train_sample.csv") 
+    data = pd.read_csv("datasets/phishing.csv") 
 
-    count = data.shape[0]
+    count = 15000
 
-    label = data['label_num'].head(count)
+    label = data['Email Type'].head(count)
 
-    text = [i for i in data['text'].head(count)]
+    text = [i for i in data['Email Text'].head(count)]
 
     features = []
+    if os.path.exists(model_file_path):
+    # Load the existing model
+        with open(model_file_path, "rb") as f:
+            model = pickle.load(f)
+        print("Existing model loaded.")
+    else:
+        model = RandomForestClassifier(n_estimators=50, random_state=42,n_jobs=4)
 
-    model = RandomForestClassifier(n_estimators=50, random_state=42)
+    
 
     for i in range(len(text)):
+        print(i)
+        if pd.isna(text[i]):
+            text[i] = ""
+        if len(text[i]) > 1000:
+            text[i] = text[i][0:1000]
+        #print(data['index'][i])
 
         temp = p.clean_text(text[i])
         
@@ -54,40 +89,55 @@ def train():
         feature = p.extract_features(temp, grammatical_errors)
 
         features.append(feature)
-
-        email_domain = p.extract_emails(text[i])
-
-        url_domain = p.extract_urls(text[i])
+              
+        #print(label[i])
 
         if label[i]:
-            #print("The text is predicted to be a phishing email")
-            if len(email_domain)!=0:
-                for j in email_domain:
-                    p.add_phishing_email(filename, j)
-                    print(f"Email domain '{j}' is newly detected and added to phishing list")
-            if len(url_domain)!=0:
-                for k in url_domain:
-                    p.add_phishing_url(filename, k)
-                    print(f"URL domain '{k}' is newly detected and added to phishing list")
+            email_domains = p.extract_emails(text[i])
+
+            url_domains = p.extract_urls(text[i])
+
+            for email_domain in email_domains:
+        
+                if check_phishing_email(filename, email_domain):
+                    previously_detected_emails.append(email_domain)
+                    #print(f"Email domain '{email_domain}' is already marked as phishing")
+
+            for url_domain in url_domains:
+        
+                if check_phishing_url(filename, url_domain):
+                    previously_detected_urls.append(url_domain)
+                    #print(f"URL domain '{url_domain}' is already marked as phishing")
+
+
+            if len(email_domains)!=0:
+                for j in email_domains:
+                    if j not in previously_detected_emails:
+                        p.add_phishing_email(filename, j)
+                        #print(f"Email domain '{j}' is newly detected and added to phishing list")
+            if len(url_domains)!=0:
+                for k in url_domains:
+                    if k not in previously_detected_urls:
+                        p.add_phishing_url(filename, k)
+                        #print(f"URL domain '{k}' is newly detected and added to phishing list")
         progress(i+1,count)
 
 
     model.fit(features, label)
 
     with open("model/phishing_model.pkl", "wb") as f:
-
         pickle.dump(model, f)
 
     print("\nModel pickled successfully!")
 
 
 def test():
-    count = 1000
+    count = 5000
     model = pickle.load(open('model/phishing_model.pkl', 'rb'))
 
-    data = pd.read_csv("datasets/train_sample.csv")
+    data = pd.read_csv("datasets/phishing.csv")
 
-    text = [i for i in data['text'].head(count)]
+    text = [i for i in data['Email Text'].head(count)]
 
     try:
         with open(filename, 'r') as f:
@@ -102,24 +152,42 @@ def test():
     acc = 0
     
     for i in range(len(text)):
-        email_domain = p.extract_emails(text[i])
-        url_domain = p.extract_urls(text[i])
+        if pd.isna(text[i]):
+            text[i] = ""
+        if len(text[i]) > 1000:
+            text[i] = text[i][0:1000]
         is_phishing = predict_phishing(model, text[i])
 
         if is_phishing[0]:
-            if(is_phishing[0] == data['label_num'][i]):
+            if(is_phishing[0] == data['Email Type'][i]):
                 acc+=1
-            #print("The text is predicted to be a phishing email")
-            if len(email_domain)!=0:
-                for j in email_domain:
-                    p.add_phishing_email(filename, j)
-                    print(f"Email domain '{j}' is newly detected and added to phishing list")
-            if len(url_domain)!=0:
-                for k in url_domain:
-                    p.add_phishing_url(filename, k)
-                    print(f"URL domain '{k}' is newly detected and added to phishing list")
-        #else:
-            #print("The text is predicted not to be a phishing email")
+            email_domains = p.extract_emails(text[i])
+
+            url_domains = p.extract_urls(text[i])
+
+            for email_domain in email_domains:
+        
+                if check_phishing_email(filename, email_domain):
+                    previously_detected_emails.append(email_domain)
+                    #print(f"Email domain '{email_domain}' is already marked as phishing")
+
+            for url_domain in url_domains:
+        
+                if check_phishing_url(filename, url_domain):
+                    previously_detected_urls.append(url_domain)
+                    #print(f"URL domain '{url_domain}' is already marked as phishing")
+
+
+            if len(email_domains)!=0:
+                for j in email_domains:
+                    if j not in previously_detected_emails:
+                        p.add_phishing_email(filename, j)
+                        #print(f"Email domain '{j}' is newly detected and added to phishing list")
+            if len(url_domains)!=0:
+                for k in url_domains:
+                    if k not in previously_detected_urls:
+                        p.add_phishing_url(filename, k)
+                        #print(f"URL domain '{k}' is newly detected and added to phishing list")
 
         progress(i+1,count)
 

@@ -8,10 +8,33 @@ import os.path
 #import email 
 #from bs4 import BeautifulSoup 
 import regex as re
+import email
 
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'] 
 
 f = open("api_results.txt",'w', encoding="utf-8")
+def extract_authentication_results(email_data):
+    authentication_results = {
+        'SPF': 0,
+        'DKIM': 0,
+        'DMARC': 0
+    }
+
+    headers = email_data['payload']['headers']
+
+    for header in headers:
+        if header['name'].lower() == 'authentication-results':
+            results = header['value'].split(';')
+            for result in results:
+                result = result.strip()
+                if result.startswith('spf='):
+                    authentication_results['SPF'] = 1 if 'pass' in result else 0
+                elif result.startswith('dkim='):
+                    authentication_results['DKIM'] = 1 if 'pass' in result else 0
+                elif result.startswith('dmarc='):
+                    authentication_results['DMARC'] = 1 if 'pass' in result else 0
+
+    return authentication_results
 def extract_urls(text):
     url_regex = r"\b(?:https?://)?(?:www\.)?([a-zA-Z0-9]+\.(?:com|org|net|in|[a-z]{2})(?:/[a-zA-Z0-9_\-.~:/?#[\]@!$&'()*+,;=]*|))"
     urls = re.findall(url_regex, text)
@@ -54,19 +77,22 @@ def getEmails():
 	
     for msg in messages: 
         txt = service.users().messages().get(userId='me', id=msg['id']).execute() 
-        ans = ""
-        ans += "BODY:	" + (txt['snippet'] + "\n")
-        txt = txt['payload']['headers']
-        for i in txt:
-            if i['name'] == "To":
-                ans += "TO:		"+(str(i['value']) + "\n")
-            if i['name'] == "Subject":
-                ans += "SUBJECT:	" + (str(i['value']) + "\n")
-            if i['name'] == "From":
-                ans += "FROM:	" + (str(i['value']) + "\n")
-        f.write(str(ans))
-        print(extract_urls(ans))
-        print(extract_emails(ans))
+        # ans = ""
+        # ans += "BODY:	" + (txt['snippet'] + "\n")
+        # txt = txt['payload']['headers']
+        # for i in txt:
+        #     if i['name'] == "To":
+        #         ans += "TO:		"+(str(i['value']) + "\n")
+        #     if i['name'] == "Subject":
+        #         ans += "SUBJECT:	" + (str(i['value']) + "\n")
+        #     if i['name'] == "From":
+        #         ans += "FROM:	" + (str(i['value']) + "\n")
+        # f.write(str(ans))
+        # print(extract_urls(ans))
+        # print(extract_emails(ans))
+        results = extract_authentication_results(txt)
+        
+        f.write(str(results))
         break
 
 
