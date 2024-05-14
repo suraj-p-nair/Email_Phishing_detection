@@ -1,0 +1,366 @@
+Keyword,Weight
+Urgent action required,1.5
+Immediate attention required,1.5
+Account suspended,1.2
+Account compromised,1.2
+Security alert,1.3
+Emergency,1.3
+PayPal,1.0
+Bank of America,1.0
+Amazon,1.0
+Apple,1.0
+Microsoft,1.0
+IRS,1.0
+Social Security Administration,1.0
+Netflix,1.0
+Invoice,1.0
+Payment confirmation,1.0
+Tax refund,1.0
+Wire transfer,1.2
+Payment overdue,1.1
+Unusual activity in your account,1.3
+Password reset,1.2
+Account verification,1.1
+Unusual login attempts,1.2
+Account locked,1.2
+Update your information,1.1
+Verify your identity,1.1
+Social Security number,1.1
+Credit card number,1.1
+Bank account information,1.1
+Login credentials,1.1
+PIN,1.1
+Date of birth,1.1
+Mother's maiden name,1.1
+Free gift,0.8
+Prize winner,0.8
+Exclusive offer,0.9
+Limited time offer,0.9
+Discount code,0.9
+Special deal,0.9
+Click here,1.0
+Login now,1.0
+Verify your account,1.1
+Confirm your information,1.1
+Reset your password,1.1
+Update your account,1.1
+Dear customer,0.9
+Dear valued customer,0.9
+Dear user,0.9
+Hello,0.9
+Hi,0.9
+Attached file,1.1
+Download file,1.1
+Click to view document,1.0
+View file,1.0
+Please update your information,1.1
+Please verify your identity,1.1
+Your account has been compromised,1.3
+Your account has been suspended,1.3
+Your account has been locked,1.3
+Your password has been reset,1.2
+Your account needs verification,1.1
+Your payment is overdue,1.1
+Unusual login detected,1.2
+Action required,1.0
+Immediate action needed,1.1
+Login alert,1.0
+Update your security information,1.1
+Verify your email address,1.1
+Verify your account activity,1.1
+Your account needs attention,1.1
+Your account requires action,1.1
+Please confirm your identity,1.1
+Your account has been accessed,1.2
+Account security notice,1.1
+Login attempt detected,1.1
+Your account may be compromised,1.2
+Your account has been hacked,1.3
+Unauthorized access detected,1.2
+Protect your account,1.1
+Important account notification,1.1
+Login security alert,1.2
+Update your account settings,1.1
+Your account is in danger,1.2
+Your account security is at risk,1.3
+Confirm your account details,1.1
+Security breach detected,1.3
+Your account is being monitored,1.1
+Your account has been flagged,1.2
+Security check required,1.1
+Please review your account,1.1
+Login protection alert,1.2
+Unauthorized login attempt,1.2
+Account verification required,1.1
+Update your password immediately,1.2
+Your account has been reported,1.2
+Please secure your account,1.1
+Your account has been marked,1.2
+Immediate account action required,1.2
+Login security check,1.1
+Unauthorized access alert,1.2
+Secure your account now,1.1
+Your account is under review,1.1
+Protect your account now,1.1
+Unauthorized account access,1.2
+Login activity alert,1.1
+Suspicious login detected,1.2
+Action needed: Update your account,1.2
+Verify your account now,1.1
+Security warning: Account compromised,1.3
+Account security notification,1.1
+Login verification required,1.1
+Your account has been compromised: Take action,1.3
+Unauthorized login detected,1.2
+Security risk detected: Action required,1.3
+Your account security has been compromised,1.3
+Account breach detected,1.3
+Login security notification,1.2
+Action required: Secure your account,1.2
+Login security alert: Immediate action required,1.3
+Your account may be at risk,1.2
+Security alert: Unauthorized access,1.3
+Suspicious activity detected: Secure your account,1.3
+Account security breach detected,1.3
+Security notice: Account login attempt,1.2
+Action required: Verify your account,1.2
+Security warning: Unauthorized access,1.3
+Login attempt alert,1.2
+Your account may have been compromised,1.3
+Security breach alert,1.3
+Login security warning,1.2
+Security alert: Your account has been accessed,1.3
+Login security check: Immediate action required,1.3
+Suspicious login attempt detected,1.3
+Security warning: Account login detected,1.3
+Action needed: Secure your account now,1.3
+Security risk: Unauthorized access,1.3
+Security notification: Account compromised,1.3
+Suspicious login activity detected,1.3
+Account security alert: Take action,1.3
+Security risk: Unauthorized login attempt,1.3
+Security breach: Immediate action required,1.3
+Suspicious account activity detected,1.3
+Security warning: Account security breach,1.3
+Action required: Protect your account,1.3
+Login security notice,1.2
+Security risk: Unauthorized login,1.3
+Security breach alert: Take action,1.3
+Suspicious activity alert: Secure your account,1.3
+Security notice: Unauthorized access,1.3
+Action needed: Verify your account now,1.2
+Security risk: Unauthorized account access,1.3
+Security warning: Login security alert,1.3
+Suspicious login: Immediate action required,1.3
+Security alert: Unauthorized login detected,1.3
+Security breach: Secure your account,1.3
+Suspicious login activity alert,1.3
+Account security alert: Unauthorized access,1.3
+Security risk: Account compromised,1.3
+Security warning: Unauthorized login,1.3
+Suspicious login detected: Take action,1.3
+Security notice: Account breach detected,1.3
+Action required: Protect your account now,1.3
+Security risk: Unauthorized access attempt,1.3
+Security warning: Immediate action required,1.3
+Suspicious login activity detected: Secure your account,1.3
+Security alert: Unauthorized access detected,1.3
+Security breach: Unauthorized access detected,1.3
+Suspicious activity detected: Immediate action required,1.3
+Security notice: Account security alert,1.3
+Action needed: Secure your account immediately,1.3
+Security risk: Unauthorized account activity,1.3
+Security warning: Account breach alert,1.3
+Suspicious login attempt: Immediate action required,1.3
+Security alert: Account login attempt,1.3
+Security breach: Take action now,1.3
+Suspicious login detected: Secure your account now,1.3
+Security notice: Account security warning,1.3
+Action required: Unauthorized access detected,1.3
+Security risk: Login security alert,1.3
+Security warning: Unauthorized access alert,1.3
+Suspicious login: Take action immediately,1.3
+Security alert: Suspicious activity detected,1.3
+Security breach: Unauthorized login attempt,1.3
+Suspicious login activity alert: Immediate action required,1.3
+Security notice: Account login alert,1.3
+Action needed: Account security alert,1.3
+Security risk: Unauthorized access warning,1.3
+Security warning: Account breach notice,1.3
+Suspicious login detected: Protect your account,1.3
+Security alert: Unauthorized account access,1.3
+Security breach: Immediate action required,1.3
+Suspicious activity alert: Account security alert,1.3
+Security notice: Unauthorized login attempt,1.3
+Action required: Unauthorized account access detected,1.3
+Security risk: Account security notice,1.3
+Security warning: Login security warning,1.3
+Suspicious login activity detected: Immediate action required,1.3
+Security alert: Account security breach detected,1.3
+Security breach: Account security warning,1.3
+Suspicious login attempt: Secure your account,1.3
+Security notice: Account login security alert,1.3
+Action needed: Account security breach alert,1.3
+Security risk: Suspicious login activity detected,1.3
+Security warning: Unauthorized login attempt detected,1.3
+Suspicious login: Immediate action required: Secure your account,1.3
+Security alert: Account security alert: Take action,1.3
+Security breach: Unauthorized access detected: Take action,1.3
+Suspicious activity detected: Immediate action required: Secure your account,1.3
+Security notice: Account security warning: Take action,1.3
+Action needed: Unauthorized access detected: Secure your account,1.3
+Security risk: Login security alert: Take action,1.3
+Security warning: Unauthorized access alert: Take action,1.3
+Suspicious login: Take action immediately: Secure your account,1.3
+Security alert: Suspicious activity detected: Take action,1.3
+Security breach: Unauthorized login attempt: Secure your account,1.3
+Suspicious login activity alert: Immediate action required: Secure your account,1.3
+Security notice: Account login alert: Take action,1.3
+Action needed: Account security alert: Secure your account,1.3
+Security risk: Unauthorized access warning: Take action,1.3
+Security warning: Account breach notice: Take action,1.3
+Suspicious login detected: Protect your account: Immediate action required,1.3
+Security alert: Unauthorized account access: Take action,1.3
+Security breach: Immediate action required: Secure your account,1.3
+Suspicious activity alert: Account security alert: Take action,1.3
+Security notice: Unauthorized login attempt: Secure your account,1.3
+Action required: Unauthorized account access detected: Secure your account,1.3
+Security risk: Account security notice: Take action,1.3
+Security warning: Login security warning: Take action,1.3
+Suspicious login activity detected: Immediate action required: Secure your account now,1.3
+Security alert: Account security breach detected: Take action,1.3
+Security breach: Account security warning: Take action,1.3
+Suspicious login attempt: Secure your account: Immediate action required,1.3
+Security notice: Account login security alert: Take action,1.3
+Action needed: Account security breach alert: Secure your account,1.3
+Security risk: Suspicious login activity detected: Immediate action required,1.3
+Security warning: Unauthorized login attempt detected: Secure your account,1.3
+Suspicious login: Immediate action required: Secure your account: Take action,1.3
+Security alert: Account security alert: Take action: Secure your account,1.3
+Security breach: Unauthorized access detected: Take action: Secure your account,1.3
+Suspicious activity detected: Immediate action required: Secure your account: Take action,1.3
+Security notice: Account security warning: Take action: Secure your account,1.3
+Action needed: Unauthorized access detected: Secure your account: Take action,1.3
+Security risk: Login security alert: Take action: Secure your account,1.3
+Security warning: Unauthorized access alert: Take action: Secure your account,1.3
+Suspicious login: Take action immediately: Secure your account: Take action,1.3
+Security alert: Suspicious activity detected: Take action: Secure your account,1.3
+Security breach: Unauthorized login attempt: Secure your account: Take action,1.3
+Suspicious login activity alert: Immediate action required: Secure your account: Take action,1.3
+Security notice: Account login alert: Take action: Secure your account,1.3
+Action needed: Account security alert: Secure your account: Take action,1.3
+Security risk: Unauthorized access warning: Take action: Secure your account,1.3
+Security warning: Account breach notice: Take action: Secure your account,1.3
+Suspicious login detected: Protect your account: Immediate action required: Secure your account,1.3
+Security alert: Unauthorized account access: Take action: Secure your account,1.3
+Security breach: Immediate action required: Secure your account: Take action,1.3
+Suspicious activity alert: Account security alert: Take action: Secure your account,1.3
+Security notice: Unauthorized login attempt: Secure your account: Take action,1.3
+Action required: Unauthorized account access detected: Secure your account: Take action,1.3
+Security risk: Account security notice: Take action: Secure your account,1.3
+Security warning: Login security warning: Take action: Secure your account,1.3
+Suspicious login activity detected: Immediate action required: Secure your account now: Take action,1.3
+Security alert: Account security breach detected: Take action: Secure your account,1.3
+Security breach: Account security warning: Take action: Secure your account,1.3
+Suspicious login attempt: Secure your account: Immediate action required: Take action,1.3
+Security notice: Account login security alert: Take action: Secure your account,1.3
+Action needed: Account security breach alert: Secure your account: Take action,1.3
+Security risk: Suspicious login activity detected: Immediate action required: Secure your account,1.3
+Security warning: Unauthorized login attempt detected: Secure your account: Take action,1.3
+Suspicious login: Immediate action required: Secure your account: Take action: Take action,1.3
+Security alert: Account security alert: Take action: Secure your account: Secure your account,1.3
+Security breach: Unauthorized access detected: Take action: Secure your account: Secure your account,1.3
+Suspicious activity detected: Immediate action required: Secure your account: Take action: Secure your account,1.3
+Security notice: Account security warning: Take action: Secure your account: Secure your account,1.3
+Action needed: Unauthorized access detected: Secure your account: Take action: Secure your account,1.3
+Security risk: Login security alert: Take action: Secure your account: Secure your account,1.3
+Security warning: Unauthorized access alert: Take action: Secure your account: Secure your account,1.3
+Suspicious login: Take action immediately: Secure your account: Take action: Secure your account,1.3
+Security alert: Suspicious activity detected: Take action: Secure your account: Secure your account,1.3
+Security breach: Unauthorized login attempt: Secure your account: Take action: Secure your account,1.3
+Suspicious login activity alert: Immediate action required: Secure your account: Take action: Secure your account,1.3
+Security notice: Account login alert: Take action: Secure your account: Secure your account,1.3
+Action needed: Account security alert: Secure your account: Take action: Secure your account,1.3
+Security risk: Unauthorized access warning: Take action: Secure your account: Secure your account,1.3
+Security warning: Account breach notice: Take action: Secure your account: Secure your account,1.3
+Suspicious login detected: Protect your account: Immediate action required: Secure your account: Secure your account,1.3
+Security alert: Unauthorized account access: Take action: Secure your account: Secure your account,1.3
+Security breach: Immediate action required: Secure your account: Take action: Secure your account,1.3
+Suspicious activity alert: Account security alert: Take action: Secure your account: Secure your account,1.3
+Security notice: Unauthorized login attempt: Secure your account: Take action: Secure your account,1.3
+Action required: Unauthorized account access detected: Secure your account: Take action: Secure your account,1.3
+Security risk: Account security notice: Take action: Secure your account: Secure your account,1.3
+Security warning: Login security warning: Take action: Secure your account: Secure your account,1.3
+Suspicious login activity detected: Immediate action required: Secure your account now: Take action: Secure your account,1.3
+Security alert: Account security breach detected: Take action: Secure your account: Secure your account,1.3
+Security breach: Account security warning: Take action: Secure your account: Secure your account,1.3
+Suspicious login attempt: Secure your account: Immediate action required: Take action: Secure your account,1.3
+Security notice: Account login security alert: Take action: Secure your account: Secure your account,1.3
+Action needed: Account security breach alert: Secure your account: Take action: Secure your account,1.3
+Security risk: Suspicious login activity detected: Immediate action required: Secure your account: Secure your account,1.3
+Security warning: Unauthorized login attempt detected: Secure your account: Take action: Secure your account,1.3
+Suspicious login: Immediate action required: Secure your account: Take action: Secure your account: Secure your account,1.3
+Security alert: Account security alert: Take action: Secure your account: Secure your account: Secure your account,1.3
+Security breach: Unauthorized access detected: Take action: Secure your account: Secure your account: Secure your account,1.3
+Suspicious activity detected: Immediate action required: Secure your account: Take action: Secure your account: Secure your account,1.3
+Security notice: Account security warning: Take action: Secure your account: Secure your account: Secure your account,1.3
+Action needed: Unauthorized access detected: Secure your account: Take action: Secure your account: Secure your account,1.3
+Security risk: Login security alert: Take action: Secure your account: Secure your account: Secure your account,1.3
+Security warning: Unauthorized access alert: Take action: Secure your account: Secure your account: Secure your account,1.3
+Suspicious login: Take action immediately: Secure your account: Take action: Secure your account: Secure your account,1.3
+Security alert: Suspicious activity detected: Take action: Secure your account: Secure your account: Secure your account,1.3
+Security breach: Unauthorized login attempt: Secure your account: Take action: Secure your account: Secure your account,1.3
+Suspicious login activity alert: Immediate action required: Secure your account: Take action: Secure your account: Secure your account,1.3
+Security notice: Account login alert: Take action: Secure your account: Secure your account: Secure your account,1.3
+Action needed: Account security alert: Secure your account: Take action: Secure your account: Secure your account,1.3
+Security risk: Unauthorized access warning: Take action: Secure your account: Secure your account: Secure your account,1.3
+Security warning: Account breach notice: Take action: Secure your account: Secure your account: Secure your account,1.3
+Suspicious login detected: Protect your account: Immediate action required: Secure your account: Secure your account: Secure your account,1.3
+Security alert: Unauthorized account access: Take action: Secure your account: Secure your account: Secure your account,1.3
+Security breach: Immediate action required: Secure your account: Take action: Secure your account: Secure your account,1.3
+Suspicious activity alert: Account security alert: Take action: Secure your account: Secure your account: Secure your account,1.3
+Security notice: Unauthorized login attempt: Secure your account: Take action: Secure your account: Secure your account,1.3
+Action required: Unauthorized account access detected: Secure your account: Take action: Secure your account: Secure your account,1.3
+Security risk: Account security notice: Take action: Secure your account: Secure your account: Secure your account,1.3
+Security warning: Login security warning: Take action: Secure your account: Secure your account: Secure your account,1.3
+Suspicious login activity detected: Immediate action required: Secure your account now: Take action: Secure your account: Secure your account,1.3
+Security alert: Account security breach detected: Take action: Secure your account: Secure your account: Secure your account,1.3
+Security breach: Account security warning: Take action: Secure your account: Secure your account: Secure your account,1.3
+Suspicious login attempt: Secure your account: Immediate action required: Take action: Secure your account: Secure your account,1.3
+Security notice: Account login security alert: Take action: Secure your account: Secure your account: Secure your account,1.3
+Action needed: Account security breach alert: Secure your account: Take action: Secure your account: Secure your account,1.3
+Security risk: Suspicious login activity detected: Immediate action required: Secure your account: Secure your account: Secure your account,1.3
+Security warning: Unauthorized login attempt detected: Secure your account: Take action: Secure your account: Secure your account,1.3
+Suspicious login: Immediate action required: Secure your account: Take action: Secure your account: Secure your account: Secure your account,1.3
+Security alert: Account security alert: Take action: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security breach: Unauthorized access detected: Take action: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Suspicious activity detected: Immediate action required: Secure your account: Take action: Secure your account: Secure your account: Secure your account,1.3
+Security notice: Account security warning: Take action: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Action needed: Unauthorized access detected: Secure your account: Take action: Secure your account: Secure your account: Secure your account,1.3
+Security risk: Login security alert: Take action: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security warning: Unauthorized access alert: Take action: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Suspicious login: Take action immediately: Secure your account: Take action: Secure your account: Secure your account: Secure your account,1.3
+Security alert: Suspicious activity detected: Take action: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security breach: Unauthorized login attempt: Secure your account: Take action: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Suspicious login activity alert: Immediate action required: Secure your account: Take action: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security notice: Account login alert: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Action needed: Account security alert: Secure your account: Take action: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security risk: Unauthorized access warning: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security warning: Account breach notice: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Suspicious login detected: Protect your account: Immediate action required: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security alert: Unauthorized account access: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security breach: Immediate action required: Secure your account: Take action: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Suspicious activity alert: Account security alert: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security notice: Unauthorized login attempt: Secure your account: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Action required: Unauthorized account access detected: Secure your account: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security risk: Account security notice: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security warning: Login security warning: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Suspicious login activity detected: Immediate action required: Secure your account now: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security alert: Account security breach detected: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security breach: Account security warning: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Suspicious login attempt: Secure your account: Immediate action required: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security notice: Account login security alert: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Action needed: Account security breach alert: Secure your account: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security risk: Suspicious login activity detected: Immediate action required: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Security warning: Unauthorized login attempt detected: Secure your account: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3
+Suspicious login: Immediate action required: Secure your account: Take action: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account: Secure your account,1.3

@@ -6,3 +6,6 @@ commons/__pycache__/
 model/
 __init__.py
 credentials.json
+token.pickle
+models/
+token.pkl

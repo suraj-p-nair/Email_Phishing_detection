@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Extraction Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container for the email extraction results */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Email box */
+        .email-box {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding: 20px; /* Increased padding for wider rectangles */
+            position: relative;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Status circles */
+        .status-circle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+
+        .status-circle-red {
+            background-color: red;
+        }
+
+        .status-circle-green {
+            background-color: green;
+        }
+
+        /* Email sections */
+        .email-section {
+            margin-bottom: 10px;
+            word-wrap: break-word; /* Added to wrap long lines */
+        }
+
+        .email-section-title {
+            font-weight: bold;
+        }
+
+        /* Logout button */
+        .logout-button {
+            float: right;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .logout-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logout button -->
+        <button class="logout-button" onclick="logout()">Logout</button>
+
+        <h1>Email Extraction Results</h1>
+        {% for email_data in data %}
+        <div class="email-box">
+            <!-- Status circle -->
+            <div class="status-circle {% if email_data.ModelResult == 1 %}status-circle-red{% else %}status-circle-green{% endif %}"></div>
+            <!-- Email content -->
+            <div class="email-section">
+                <span class="email-section-title">From:</span> {{ email_data.From }}
+            </div>
+            <div class="email-section">
+                <span class="email-section-title">Subject:</span> {{ email_data.Subject }}
+            </div>
+            <div class="email-section">
+                <span class="email-section-title">Body:</span>
+                <p>{{ email_data.Body }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        function logout() {
+            // Redirect to logout endpoint or perform logout action
+            window.location.href = 'http://localhost:5000/logout';
+        }
+    </script>
+</body>
+</html>

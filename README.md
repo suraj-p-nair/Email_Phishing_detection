@@ -1,24 +1,5 @@
-project status track
-this project is still being worked on
+This project is an email phishing detection system leveraging Natural Language Processing (NLP) techniques. Due to size limitations on GitHub, the two essential RandomForest models required for the functionality could not be directly uploaded alongside the project.
 
-24/1/24 
- added existing files into github.
- - need to add model.
- -need to test model
- -web interface
+Additionally, to enable the seamless integration of the Gmail API for email processing, it is necessary to provide Google's Gmail API credentials. These credentials should be saved in a file named "credentials.json" within the project directory.
 
-30/1/24 
-
-added model
-trained model
-added progress bar
-pickled model
-
-training done on sample spam email dataset
-
-
-1/2/24
-training and testing on small dataset done
-need to tweak feature selection
-need to train on bigger dataset
-
+To access the RandomForest models vital for the project's functionality, please follow the provided link: [Download RandomForest Models](https://drive.google.com/drive/folders/1kvCliUUbO0Ik00Zf6AJ0G05Les8DiXJm?usp=drive_link)

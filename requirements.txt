@@ -1,0 +1,10 @@
+pandas==1.4.1
+nltk==3.6.5
+scikit-learn==1.4.1.post1
+fuzzywuzzy==0.18.0
+textblob==0.15.3
+joblib==1.1.0
+google-api-python-client==2.23.0
+oauthlib==3.2.0
+google-auth==2.7.2
+google-auth-oauthlib==0.4.6
