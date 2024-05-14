@@ -120,7 +120,7 @@ async def extract_features(text, grammatical_errors):
 
     features = keyword_features + url_features + special_char_features + [grammatical_errors, previously_detected_feature] + pos_features + sentiment
 
-    f.write(str(features) + "\n")
+    #f.write(str(features) + "\n")
 
     return features
 
